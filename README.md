@@ -6,72 +6,56 @@ This project analyses a synthetic cloud service log dataset using cloud object s
 
 The dataset was uploaded to an Alibaba Cloud OSS bucket and then retrieved to the ECS processing environment as:
 
-data/cloud_service_logs.csv
+`data/cloud_service_logs.csv`
 
 The local CSV file contains 50,000 log records excluding the header row.
 
-## Project Structure
+## Project Structure, Outputs, Environment and Running
 
-data/
-  cloud_service_logs.csv
+**Comp3041J_Group13_code**
 
-mapreduce_baseline/
-  mr_request_count.py
-  mr_server_errors.py
-  mr_slow_endpoints.py
-  outputs/
+  **data/**  
+  &nbsp;&nbsp;cloud_service_logs.csv
 
-ray_extension/
-  ray_degraded_services.py
-  outputs/
+  **mapreduce_baseline/**  
+  &nbsp;&nbsp;mr_request_count.py  
+  &nbsp;&nbsp;mr_server_errors.py  
+  &nbsp;&nbsp;mr_slow_endpoints.py  
+  &nbsp;&nbsp;outputs/  
+  &nbsp;&nbsp;&nbsp;&nbsp;request_count_by_service.txt  
+  &nbsp;&nbsp;&nbsp;&nbsp;server_error_count_by_service.txt  
+  &nbsp;&nbsp;&nbsp;&nbsp;top10_slow_endpoints.txt
 
-validation_comparison/
-  validate_results.py
-  outputs/
+  **ray_extension/**  
+  &nbsp;&nbsp;ray_degraded_services.py  
+  &nbsp;&nbsp;outputs/  
+  &nbsp;&nbsp;&nbsp;&nbsp;ray_service_stats.txt  
+  &nbsp;&nbsp;&nbsp;&nbsp;ray_degraded_services.txt
 
-run_all.sh
+  **validation_comparison/**  
+  &nbsp;&nbsp;validate_results.py  
+  &nbsp;&nbsp;outputs/  
+  &nbsp;&nbsp;&nbsp;&nbsp;runtime_log.txt  
+  &nbsp;&nbsp;&nbsp;&nbsp;validation_check.txt
 
-## MapReduce Baseline
+  run_all.sh  
+  README.md
 
-The MapReduce baseline produces three outputs:
-
-mapreduce_baseline/outputs/request_count_by_service.txt
-mapreduce_baseline/outputs/server_error_count_by_service.txt
-mapreduce_baseline/outputs/top10_slow_endpoints.txt
-
-## Ray Extension
-
-The Ray script processes the dataset in chunks using Ray remote tasks. It combines partial service-level statistics and detects degraded services.
-
-Ray outputs:
-
-ray_extension/outputs/ray_service_stats.txt
-ray_extension/outputs/ray_degraded_services.txt
-
-## Validation and Runtime
-
-Validation and runtime outputs are stored in:
-
-validation_comparison/outputs/validation_check.txt
-validation_comparison/outputs/runtime_log.txt
-
-## Environment
-
+**Environment**  
 The implementation was run on Alibaba Cloud ECS using Ubuntu 22.04, Python 3.10, pandas, and Ray local mode.
 
-## Running the Project
+**Running the Project**  
 
-Create and activate a Python virtual environment:
-
+```bash
+# Create and activate a Python virtual environment
 python3 -m venv venv
 source venv/bin/activate
 
-Install the required packages:
-
+# Install the required packages
 pip install pandas ray
 
-Run all analytics scripts:
-
+# Run all analytics scripts
 bash run_all.sh
+```
 
-The script regenerates the MapReduce outputs, Ray outputs, validation result, and runtime log.
+This script regenerates the MapReduce outputs, Ray outputs, validation result, and runtime log.
