@@ -1,0 +1,13 @@
+Runtime log
+===========
+Execution environment: Alibaba Cloud ECS, Ubuntu 22.04, 2 vCPU, 2 GiB RAM, Python 3.10, Ray local mode
+Dataset: data/cloud_service_logs.csv, 50000 records excluding header
+
+MapReduce request count by service: 210 ms
+MapReduce server error count by service: 221 ms
+MapReduce top 10 slow endpoints: 234 ms
+Ray degraded service detection: 10248 ms
+
+Python version: Python 3.10.12
+Pandas version: 2.3.3
+Ray version: 2.55.1

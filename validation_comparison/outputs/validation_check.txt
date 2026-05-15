@@ -1,0 +1,27 @@
+Validation service: payment-service
+
+Independent CSV check
+total_requests: 7914
+slow_requests: 2134
+server_errors: 1362
+timeout_errors: 664
+slow_request_rate: 0.2696
+server_error_rate: 0.1721
+
+Output comparison
+mapreduce_request_count: 7914
+mapreduce_server_errors: 1362
+ray_total_requests: 7914
+ray_slow_requests: 2134
+ray_server_errors: 1362
+ray_timeout_errors: 664
+
+Consistency check
+total_requests_match: True
+server_errors_match: True
+slow_requests_match: True
+timeout_errors_match: True
+
+Degraded-service check
+degraded: True
+reason: high slow request rate; high server error rate; repeated timeout errors
